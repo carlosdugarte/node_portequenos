@@ -1,6 +1,4 @@
 const express = require('express');
-
-
 const  rutasProductos = require('./productos/productos.routes')
 
 const router = express.Router();
