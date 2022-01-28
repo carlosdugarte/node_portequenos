@@ -1,32 +1,28 @@
-const express = require("express");
-const { Router } = express;
-const app = express();
-const router = Router();
+//variables
+const express = require('express')
+const { Router } = express
 
-var Contenedor = require('../api/Contenedor.js');
-const productos = new Contenedor('./productos.txt');
+var Contenedor = require('../api/Contenedor.js')
 
-//definición plantilla
-const { engine } = require ('express-handlebars');
-app.engine('handlebars', engine({defaultLayout: 'index.handlebars'}));
-app.set('view engine', 'handlebars')
-app.set('views', './views')
+const app = express()
+const router = Router()
 
-//middlewares
+const productos = new Contenedor('./productos.txt')
+
+//middleware
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(express.static('public'))
 
 //Definición de ruta
 app.use('/api/productos', router)
 
-//ENDPOINTS
-router.get('/', async (req, res) => {    
-    const prods = await productos.getAll();
-    //console.log(prods);
-    res.render('vista', { product: prods, hayProductos: prods.length });
-});
+//Rutas
 
+//GET '/api/productos' -> devuelve todos los productos.
+router.get('/', async (req, res) => {
+    const prods = await productos.getAll()
+    res.json(prods)
+})
 
 //GET '/api/productos/:id' -> devuelve un producto según su id.
 router.get('/:idProducto', async (req, res) => {
@@ -40,8 +36,6 @@ router.get('/:idProducto', async (req, res) => {
 //POST '/api/productos' -> recibe y agrega un producto, y lo devuelve con su id asignado.
 router.post('/', async (req, res) => {
 
-    console.log(req.body)
-
     const {title, price, thumbnail} = req.body;
 
     const nuevoProducto = {
@@ -53,8 +47,7 @@ router.post('/', async (req, res) => {
     productos.save(nuevoProducto);
 
     //console.log(req.body)
-    // res.json(nuevoProducto);
-    res.redirect('/api/productos')
+    res.json(nuevoProducto);
 })
 
 //PUT '/api/productos/:id' -> recibe y actualiza un producto según su id.
@@ -98,8 +91,15 @@ router.delete('/:idProducto', async (req, res) => {
 })
 
 
+router.get('/productoRandom', async (req, res) => {
+    const prods = await productos.getAll()
+    const random = parseInt(Math.random() * prods.length)
+    res.send(prods[random])
+})
 
-//listener server
+
+
+//listener
 const PORT = process.env.PORT || 8080;
 
 const server = app.listen(PORT, () => {
