@@ -1,6 +1,5 @@
 const { promises: fs } = require('fs');
 
-
 module.exports = class Contenedor {
 
     //1. constructor
@@ -34,7 +33,7 @@ module.exports = class Contenedor {
     //3. Obtener objeto por id
     async getById(id) {
         const objs = await this.getAll()
-        const buscado = objs.find(o => o.id == id)
+        const buscado = objs.find(o => o.id === +(id))
         return buscado
     }
 
@@ -60,6 +59,7 @@ module.exports = class Contenedor {
         try {
             await fs.writeFile(this.ruta, JSON.stringify(objs, null, 2))
         } catch (error) {
+            
             throw new Error(`Error al borrar: ${error}`)
         }
     }
@@ -67,6 +67,37 @@ module.exports = class Contenedor {
     //6. Borrar todos los objetos
     async deleteAll() {
         await fs.writeFile(this.ruta, JSON.stringify([], null, 2))
+    }
+
+    //7. Actualizar producto
+    async update(objActualizado){
+
+        //obtengo el rreglo de objetos
+        const objs = await this.getAll()
+
+        //busco el indice del objeto a actualizar
+        const index = objs.findIndex(o => o.id == objActualizado.idProducto)
+
+        if (index == -1) {
+            throw new Error(`Error al actualizar: no se encontró el id ${objActualizado.idProducto}`)
+        }
+
+        //nvo producto
+        const nuevoProducto = {
+            ...objs[index],
+            title: objActualizado.title,
+            price: objActualizado.price,
+            thumbnail: objActualizado.thumbnail            
+        };
+
+        objs[index] = nuevoProducto;
+        
+        try {
+            await fs.writeFile(this.ruta, JSON.stringify(objs, null, 2))
+        } catch (error) {
+            throw new Error(`Error al actualizar: ${error}`)
+        }
+
     }
 }
 
