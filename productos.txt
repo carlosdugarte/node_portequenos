@@ -18,21 +18,9 @@
     "id": 3
   },
   {
-    "title": "tequeño prueba",
-    "price": "30",
+    "title": "prueba",
+    "price": "111",
     "thumbnail": "https://i.ibb.co/6BCx9Q5/teque1.png",
     "id": 4
-  },
-  {
-    "title": "otra prueba",
-    "price": "100",
-    "thumbnail": "https://i.ibb.co/6BCx9Q5/teque1.png",
-    "id": 5
-  },
-  {
-    "title": "pruea 3",
-    "price": "1000",
-    "thumbnail": "https://i.ibb.co/6BCx9Q5/teque1.png",
-    "id": 6
   }
 ]
