@@ -16,17 +16,5 @@
     "price": 700,
     "thumbnail": "https://i.ibb.co/Dt3sP0n/teque3.png",
     "id": 3
-  },
-  {
-    "title": "prueba",
-    "price": "111",
-    "thumbnail": "https://i.ibb.co/6BCx9Q5/teque1.png",
-    "id": 4
-  },
-  {
-    "title": "prueba 2",
-    "price": "9999",
-    "thumbnail": "https://i.ibb.co/6BCx9Q5/teque1.png",
-    "id": 5
-  }
+  } 
 ]
