@@ -4,7 +4,7 @@ const app = express();
 const router = Router();
 
 var Contenedor = require('../api/Contenedor.js');
-const productos = new Contenedor('./productos.txt');
+const productos = new Contenedor('./data/productos.txt');
 
 //definición plantilla
 const { engine } = require ('express-handlebars');

@@ -40,6 +40,7 @@ module.exports = class Contenedor {
     //4. Obtener todos los objetos
     async getAll() {
         try {
+            console.log(this.ruta)
             const objs = await fs.readFile(this.ruta, 'utf-8')
             return JSON.parse(objs)
         } catch (error) {
