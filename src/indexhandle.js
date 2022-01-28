@@ -17,6 +17,7 @@ app.set('views', './views')
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+
 app.use(express.static('public'))
 
 
@@ -28,7 +29,7 @@ const productos = new Contenedor('./productos.txt');
 router.get('/', async (req, res) => {    
     const prods = await productos.getAll()
 
-    console.log(prods);
+    //console.log(prods);
     res.render('vista', { product: prods, hayProductos: prods.length });
 });
 
