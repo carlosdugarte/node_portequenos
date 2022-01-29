@@ -2,9 +2,9 @@ const express = require('express');
 
 const router = express.Router();
 
-var Contenedor = require('../../api/Contenedor');
+var Productos = require('../../api/Productos');
 
-const productos = new Contenedor('./data/productos.txt');
+const productos = new Productos('./data/productos.txt');
 
 //ENDPOINTS
 router.get('/', async (req, res) => {    

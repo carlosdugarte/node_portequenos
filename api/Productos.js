@@ -1,6 +1,6 @@
 const { promises: fs } = require('fs');
 
-module.exports = class Contenedor {
+module.exports = class Productos {
 
     //1. constructor
     constructor(ruta) {
