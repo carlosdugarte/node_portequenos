@@ -6,10 +6,11 @@ var Productos = require('../../api/Productos');
 
 const productos = new Productos('./data/productos.txt');
 
+const administrador = true;
+
 //ENDPOINTS
 router.get('/', async (req, res) => {    
     const prods = await productos.getAll();
-    console.log(prods);
     res.render('vista', { product: prods, hayProductos: prods.length });
 });
 
@@ -19,13 +20,14 @@ router.get('/:idProducto', async (req, res) => {
     const id = req.params.idProducto;
     const prod =  await productos.getById(id);
     if(!prod) return res.status(400).json({error: `Producto con id ${id} no encontrado`})
+    if(!administrador) return res.status(400).json({ error : -1, descripcion: `ruta /api/productos/:idProducto método GET no autorizada` })
     res.json(prod)
 })
 
 //POST '/api/productos' -> recibe y agrega un producto, y lo devuelve con su id asignado.
 router.post('/', async (req, res) => {
 
-    console.log(req.body)
+    if(!administrador) return res.status(400).json({ error : -1, descripcion: `ruta /api/productos/ método POST no autorizada` })
 
     const {title, price, thumbnail} = req.body;
 
@@ -37,13 +39,13 @@ router.post('/', async (req, res) => {
 
     productos.save(nuevoProducto);
 
-    //console.log(req.body)
-    // res.json(nuevoProducto);
     res.redirect('/api/productos')
 })
 
 //PUT '/api/productos/:id' -> recibe y actualiza un producto según su id.
 router.put('/:idProducto', async (req, res) => {
+
+    if(!administrador) return res.status(400).json({ error : -1, descripcion: `ruta /api/productos/:idProducto método PUT no autorizada` })
 
     const { idProducto } = req.params;
     const {title, price, thumbnail} = req.body;
@@ -67,7 +69,8 @@ router.put('/:idProducto', async (req, res) => {
 
 //DELETE '/api/productos/:id' -> elimina un producto según su id.
 router.delete('/:idProducto', async (req, res) => {
-    console.log(req.params)
+    
+    if(!administrador) return res.status(400).json({ error : -1, descripcion: `ruta /api/productos/:idProducto método DELETE no autorizada` })
 
     const { idProducto } = req.params;
 

@@ -3,7 +3,7 @@ const app = express();
 
 const rutasApi = require('../routers/app.routes');
 
-//definición plantilla
+//definición plantilla productos
 const { engine } = require ('express-handlebars');
 app.engine('handlebars', engine({defaultLayout: 'index.handlebars'}));
 app.set('view engine', 'handlebars')
