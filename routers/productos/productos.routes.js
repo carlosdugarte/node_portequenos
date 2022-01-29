@@ -29,17 +29,30 @@ router.post('/', async (req, res) => {
 
     if(!administrador) return res.status(400).json({ error : -1, descripcion: `ruta /api/productos/ método POST no autorizada` })
 
-    const {title, price, thumbnail} = req.body;
+    const {nombre, descripcion, codigo, foto, precio} = req.body;
+    const timestamp = Date.now();
+    const stock = 1000;
 
     const nuevoProducto = {
-        title, 
-        price,
-        thumbnail
+        timestamp,
+        nombre, 
+        descripcion, 
+        codigo, 
+        foto, 
+        precio, 
+        stock
     }
 
-    productos.save(nuevoProducto);
+    let guardar = productos.save(nuevoProducto);
 
-    res.redirect('/api/productos')
+    guardar.then((data) => {
+        res.redirect('/api/productos')
+    })
+    .catch((err) => {
+        return res.status(400).json({error: `${err}`})
+    })
+
+    
 })
 
 //PUT '/api/productos/:id' -> recibe y actualiza un producto según su id.
@@ -48,12 +61,14 @@ router.put('/:idProducto', async (req, res) => {
     if(!administrador) return res.status(400).json({ error : -1, descripcion: `ruta /api/productos/:idProducto método PUT no autorizada` })
 
     const { idProducto } = req.params;
-    const {title, price, thumbnail} = req.body;
+    const {nombre, descripcion, codigo, foto, precio} = req.body;
 
     const productoActualizar = {
-        title, 
-        price, 
-        thumbnail,
+        nombre, 
+        descripcion, 
+        codigo, 
+        foto, 
+        precio,
         idProducto
     }
 

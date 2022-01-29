@@ -19,7 +19,7 @@ module.exports = class Productos {
             newId = objs[objs.length - 1].id + 1
         }
 
-        const newObj = { ...obj, id: newId }
+        const newObj = { id: newId, ...obj }
         objs.push(newObj)
 
         try {
@@ -86,9 +86,11 @@ module.exports = class Productos {
         //nvo producto
         const nuevoProducto = {
             ...objs[index],
-            title: objActualizado.title,
-            price: objActualizado.price,
-            thumbnail: objActualizado.thumbnail            
+            nombre: objActualizado.nombre,
+            descripcion: objActualizado.descripcion,
+            codigo: objActualizado.codigo,
+            foto: objActualizado.foto,
+            precio: objActualizado.precio
         };
 
         objs[index] = nuevoProducto;
