@@ -2,7 +2,7 @@
   {
     "id": 1,
     "timestamp": 1643486243588,
-    "nombre": "combo1433333",
+    "nombre": "carlistos",
     "descripcion": "Combo de 14 tequeños medianos",
     "codigo": "teque14",
     "foto": "https://i.ibb.co/6BCx9Q5/teque1.png",

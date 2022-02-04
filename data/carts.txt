@@ -1,0 +1,49 @@
+[
+  {
+    "id": 1,
+    "timestamp": 1643486243588,
+    "productos": [
+      {
+        "id": 1,
+        "timestamp": 1643486243588,
+        "nombre": "carlistos",
+        "descripcion": "Combo de 14 tequeños medianos",
+        "codigo": "teque14",
+        "foto": "https://i.ibb.co/6BCx9Q5/teque1.png",
+        "precio": "1000",
+        "stock": 1000
+      },
+      {
+        "id": 2,
+        "timestamp": 1643486243588,
+        "nombre": "segundo",
+        "descripcion": "segundo",
+        "codigo": "teque14",
+        "foto": "https://i.ibb.co/6BCx9Q5/teque1.png",
+        "precio": "1",
+        "stock": 1000
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "timestamp": 1643812213764,
+    "productos": [
+      {
+        "id": 2,
+        "timestamp": 1643486261903,
+        "nombre": "combo6",
+        "descripcion": "Combo de 6 tequeños medianos",
+        "codigo": "teque6",
+        "foto": "https://i.ibb.co/jHhQCBF/teque2.png",
+        "precio": "600",
+        "stock": 1000
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "timestamp": 1643909742031,
+    "productos": []
+  }
+]

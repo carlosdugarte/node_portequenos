@@ -16,7 +16,14 @@ app.use(express.static('public'))
 
 //Definición de ruta
 app.use('/api', rutasApi);
-//console.log(rutasApi);
+
+//Si la ruta no existe
+app.use('*', (req, res) => {
+    res.status(404).json({
+        error: -2,
+        descripcion: 'la ruta ' + req.baseUrl + ' no existe'
+    });
+});
 
 //listener server
 const PORT = process.env.PORT || 8080;
