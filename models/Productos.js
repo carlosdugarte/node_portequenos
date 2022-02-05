@@ -90,7 +90,8 @@ module.exports = class Productos {
             descripcion: objActualizado.descripcion,
             codigo: objActualizado.codigo,
             foto: objActualizado.foto,
-            precio: objActualizado.precio
+            precio: objActualizado.precio,
+            stock: objActualizado.stock
         };
 
         objs[index] = nuevoProducto;

@@ -53,7 +53,7 @@ const updateProductController = async (req, res) => {
     //if(!administrador) return res.status(400).json({ error : -1, descripcion: `ruta ${req.originalUrl} método ${req.method} no autorizada` })
 
     const { idProducto } = req.params;
-    const {nombre, descripcion, codigo, foto, precio} = req.body;
+    const {nombre, descripcion, codigo, foto, precio, stock} = req.body;
 
     const productoActualizar = {
         nombre, 
@@ -61,6 +61,7 @@ const updateProductController = async (req, res) => {
         codigo, 
         foto, 
         precio,
+        stock,
         idProducto
     }
 
