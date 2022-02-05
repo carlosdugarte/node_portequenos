@@ -33,7 +33,7 @@ const addProductController = async (req, res) => { //OK
 
     console.log("cartId: " +cartId + " produtId: " + productId);
 
-    if (!cartId && !productId) 
+    if (!cartId || !productId) 
         return res.status(400).send(`Cart id or/and product id missing from body or params.`);
     
     const response = await cart.addProduct(cartId, productId);
