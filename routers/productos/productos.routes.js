@@ -12,7 +12,7 @@ const {
 //ENDPOINTS
 router.get('/:idProducto?', getProductsController);
 router.post('/', autorizadorMiddleware, addProductController)
-router.put('/:idProducto', autorizadorMiddleware, updateProductController)
+router.put('/:idProducto', updateProductController)
 router.delete('/:idProducto', autorizadorMiddleware, deleteProductController)
 
 module.exports = router;

@@ -7,7 +7,7 @@
     "codigo": "teque14",
     "foto": "https://i.ibb.co/6BCx9Q5/teque1.png",
     "precio": "1000",
-    "stock": 1000
+    "stock": 9999
   },
   {
     "id": 2,
