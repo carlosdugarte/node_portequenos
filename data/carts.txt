@@ -28,18 +28,7 @@
   {
     "id": 2,
     "timestamp": 1643812213764,
-    "productos": [
-      {
-        "id": 2,
-        "timestamp": 1643486261903,
-        "nombre": "combo6",
-        "descripcion": "Combo de 6 tequeños medianos",
-        "codigo": "teque6",
-        "foto": "https://i.ibb.co/jHhQCBF/teque2.png",
-        "precio": "600",
-        "stock": 1000
-      }
-    ]
+    "productos": []
   },
   {
     "id": 3,

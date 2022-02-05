@@ -14,14 +14,14 @@ const getProductsController = async (req, res) => {
     }
 
     if(!response) return res.status(400).json({error: `Producto con id ${id} no encontrado`})
-    if(!administrador) return res.status(400).json({ error : -1, descripcion: `ruta ${req.originalUrl} método ${req.method} no autorizada` })
+    //if(!administrador) return res.status(400).json({ error : -1, descripcion: `ruta ${req.originalUrl} método ${req.method} no autorizada` })
 
     return res.json(response);
 };
 
 const addProductController = async (req, res) =>{
 
-    if(!administrador) return res.status(400).json({ error : -1, descripcion: `ruta ${req.originalUrl} método ${req.method} no autorizada` })
+    //if(!administrador) return res.status(400).json({ error : -1, descripcion: `ruta ${req.originalUrl} método ${req.method} no autorizada` })
 
     const {nombre, descripcion, codigo, foto, precio} = req.body;
     const timestamp = Date.now();
@@ -50,7 +50,7 @@ const addProductController = async (req, res) =>{
 
 const updateProductController = async (req, res) => {
 
-    if(!administrador) return res.status(400).json({ error : -1, descripcion: `ruta ${req.originalUrl} método ${req.method} no autorizada` })
+    //if(!administrador) return res.status(400).json({ error : -1, descripcion: `ruta ${req.originalUrl} método ${req.method} no autorizada` })
 
     const { idProducto } = req.params;
     const {nombre, descripcion, codigo, foto, precio} = req.body;
@@ -77,7 +77,7 @@ const updateProductController = async (req, res) => {
 
 const deleteProductController = async (req, res) => {
 
-    if(!administrador) return res.status(400).json({ error : -1, descripcion: `ruta ${req.originalUrl} método ${req.method} no autorizada` })
+    //if(!administrador) return res.status(400).json({ error : -1, descripcion: `ruta ${req.originalUrl} método ${req.method} no autorizada` })
 
     const { idProducto } = req.params;
 

@@ -9,7 +9,7 @@ const fileName = 'carts.txt'
 
 
 class Carrito {
-    async getFileData() { //OK
+    async getFileData() { 
         try {
             const data = await fs.readFile(`${filePath}${fileName}`, 'utf-8');
             return JSON.parse(data);
@@ -18,7 +18,7 @@ class Carrito {
             return error;
         }
     }
-    async saveFileData(data) { //OK
+    async saveFileData(data) {
         try {   
             await fs.writeFile(`${filePath}${fileName}`, JSON.stringify(data, null, 2));
             return data;
@@ -27,11 +27,10 @@ class Carrito {
             return error;
         }
     }
-    async createCart() { //OK
+    async createCart() { 
         const data = await this.getFileData();
         const timestamp = Date.now();
 
-        console.log(data);
         const newId = data[data.length - 1].id + 1;
 
         const cart = { id: newId, timestamp, productos: [] };
@@ -40,7 +39,7 @@ class Carrito {
         return cart.id;
     }
 
-    async deleteCart(id) { //OK
+    async deleteCart(id) { 
         const data = await this.getFileData();
         const index = data.findIndex(cart => cart.id === parseInt(id));
         if (index < 0) return { error: `Carrito con id ${id} no encontrado` };
@@ -48,7 +47,7 @@ class Carrito {
         return await this.saveFileData(data);
     }
 
-    async getCart(id) {         //OK
+    async getCart(id) {        
         const data = await this.getFileData();
         const cart = data.find(cart => cart.id === parseInt(id));
         if (cart) return cart;
